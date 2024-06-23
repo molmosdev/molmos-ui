@@ -1,0 +1,6 @@
+<ng-content select="[mo-sidebar-item-icon]"/>
+@if (state() === SidenavState.OPEN) {
+  <div class="item" @fadeInOutAnimation>
+    <ng-content select="[mo-sidebar-item-text]"/>
+  </div>
+}

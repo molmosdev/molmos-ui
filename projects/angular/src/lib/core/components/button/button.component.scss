@@ -1,0 +1,60 @@
+@import '../../../styles';
+
+:host {
+  #mo-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    border-radius: var(--roundness);
+    box-sizing: border-box;
+    gap: 5px;
+    position: relative;
+    overflow: hidden;
+    transition: background-color 0.2s;
+    width: 100%;
+    font-size: 100%;
+
+    &.primary {
+      border: 1px solid color-mix(in srgb, var(--primary-foreground) 20%, var(--primary));
+      background-color: var(--primary);
+      color: var(--primary-foreground);
+      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.03);
+
+      &:hover {
+        background-color: color-mix(in srgb, var(--primary-foreground) 10%, var(--primary));
+      }
+    }
+
+    &.secondary {
+      background-color: var(--secondary);
+
+      &:hover {
+        background-color: color-mix(in srgb, var(--secondary-foreground) 10%, var(--secondary));
+      }
+    }
+
+    &.ghost {
+      background-color: transparent;
+
+      &:hover {
+        background-color: var(--secondary);
+      }
+    }
+
+    &.secondary, &.ghost {
+      border: 0;
+      color: var(--secondary-foreground);
+    }
+
+    &:active {
+      transform: scale(0.97);
+      transition: 0.1s;
+    }
+
+    &:hover {
+      cursor: pointer;
+      transition: 0.2s;
+    }
+  }
+}

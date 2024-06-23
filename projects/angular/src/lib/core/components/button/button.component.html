@@ -1,0 +1,6 @@
+<button #button [ngClass]="type()" [ngStyle]="paddingInlineStyle" class="f-400" id="mo-button" tabindex="0">
+  @if (spinnerData.active) {
+    <mo-spinner [data]="spinnerData" @fadeInOutAnimation/>
+  }
+  <ng-content/>
+</button>
