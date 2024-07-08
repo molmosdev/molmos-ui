@@ -42,3 +42,23 @@ export * from './lib/shared/enums/theme-properties.enum';
 
 /* Directives */
 export * from './lib/shared/directives/lazy-content.directive';
+
+/* Select */
+export * from './lib/core/components/select/select.component';
+export * from './lib/core/components/select/animations/animations';
+
+/* Select Options */
+export * from './lib/shared/components/select-options/select-options.component';
+export * from './lib/shared/components/select-options/enums/options-positioning.enum';
+
+/* Select Option */
+export * from './lib/shared/components/select-options/components/select-option/select-option.component';
+
+/* Text */
+export * from './lib/core/components/text/text.component';
+
+/* Number */
+export * from './lib/core/components/number/number.component';
+
+/* Switch */
+export * from './lib/core/components/switch/switch.component';

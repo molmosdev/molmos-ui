@@ -1,0 +1,26 @@
+<div #trigger
+     (click)="toggleOptions()"
+     (focusin)="isFocused.set(true)"
+     (focusout)="isFocused.set(false)" [ngClass]="{'has-label': label(), 'has-value': selectedId()}"
+     class="selected-option"
+     tabindex="0">
+  @if (label()) {
+    <div class="label" [ngClass]="{'has-value': selectedId()}">
+      {{ label() }}
+    </div>
+  }
+  {{ selectedValue }}
+</div>
+@defer (when showOptions()) {
+  @if (showOptions()) {
+    <mo-select-options @optionsTrigger
+                       [trigger]="triggerElementRef()!"
+                       [(selectedId)]="selectedId"
+                       [(show)]="showOptions"
+                       [options]="options()"
+                       [positioning]="positioning()"
+                       [(usingKeyboard)]="optionsUsingKeyboard">
+      <ng-content></ng-content>
+    </mo-select-options>
+  }
+}

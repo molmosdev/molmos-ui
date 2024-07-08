@@ -54,7 +54,7 @@ export class Button {
     padding = Math.min(padding, maxPadding);
 
     return {
-      'padding-inline': `${padding}px`,
+      'padding-inline': `${padding}px`
     }
   }
 

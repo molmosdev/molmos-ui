@@ -1,0 +1,5 @@
+<div (click)="show.set(false)" @fadeInOutAnimation class="outside"></div>
+<section #optionsContainer (click)="show.set(false)" [@fadeInOutVerticalTrigger]="positioningParams"
+         [ngStyle]="{'max-height': height() + 'px'}">
+  <ng-content/>
+</section>
