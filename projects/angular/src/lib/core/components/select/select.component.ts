@@ -41,13 +41,13 @@ export class Select {
   label: InputSignal<string | undefined> = input<string | undefined>(undefined);
   positioning: ModelSignal<OptionsPositioningEnum> = model<OptionsPositioningEnum>(OptionsPositioningEnum.Down);
   selectedId: ModelSignal<string | null> = model.required<string | null>();
+  selectedValue: ModelSignal<string | null> = model<string | null>(null);
   triggerElementRef: Signal<ElementRef | undefined> = viewChild<ElementRef>('trigger');
   showOptions: WritableSignal<boolean> = signal<boolean>(false);
   isFocused: WritableSignal<boolean> = signal(false);
   options: Signal<readonly SelectOption[]> = contentChildren(SelectOption);
   onChangeOption: OutputEmitterRef<void> = output<void>();
   optionsUsingKeyboard: boolean = false;
-  selectedValue: string | null = null;
 
   constructor() {
     effect(() => {
@@ -61,7 +61,6 @@ export class Select {
    */
   setSelectedValue(): void {
     if (typeof this.selectedId() !== 'undefined') {
-      this.selectedValue = this.options().find(option => option.id() === this.selectedId())?.value()!;
       this.onChangeOption.emit();
     }
   }

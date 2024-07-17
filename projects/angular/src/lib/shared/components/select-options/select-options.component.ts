@@ -37,6 +37,7 @@ import { Subscription } from 'rxjs';
 export class SelectOptions implements OnDestroy {
   trigger: InputSignal<ElementRef> = input.required<ElementRef>();
   selectedId: ModelSignal<string | null> = model.required<string | null>();
+  selectedValue: ModelSignal<string | null> = model<string | null>(null);
   positioning: InputSignal<OptionsPositioningEnum> = input<OptionsPositioningEnum>(OptionsPositioningEnum.Down);
   show: ModelSignal<boolean> = model.required<boolean>();
   height: InputSignal<number> = input<number>(200);
@@ -96,6 +97,7 @@ export class SelectOptions implements OnDestroy {
       subs = option.selectEmitter.subscribe(() => {
         if (typeof option.optionId !== 'undefined' && this.selectedId() !== option.optionId) {
           this.selectedId.set(option.optionId);
+          this.selectedValue.set(option.value());
         }
       });
       this.subscriptions.add(subs);
@@ -164,9 +166,10 @@ export class SelectOptions implements OnDestroy {
         this.scrollToFocusedOption();
       }
     } else if (event.key === 'Enter') {
-      const focusedOption = this.options()[currentIndex].id();
-      if (typeof focusedOption !== 'undefined') {
-        this.selectedId.set(focusedOption);
+      const focusedOptionId = this.options()[currentIndex].id();
+      if (typeof focusedOptionId !== 'undefined') {
+        this.selectedId.set(focusedOptionId);
+        this.selectedValue.set(this.options()[currentIndex].value());
       }
       this.show.set(false);
       event.preventDefault();

@@ -13,6 +13,14 @@
     background: var(--background);
     position: relative;
 
+    .arrows {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
+
     .label {
       position: absolute;
       transform: translateY(-50%);

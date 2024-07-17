@@ -9,13 +9,21 @@
       {{ label() }}
     </div>
   }
-  {{ selectedValue }}
+  {{ selectedValue() }}
+  <div class="arrows">
+    @if (showOptions()) {
+      <ng-content select="[mo-arrow-up]"/>
+    } @else {
+      <ng-content select="[mo-arrow-down]"/>
+    }
+  </div>
 </div>
 @defer (when showOptions()) {
   @if (showOptions()) {
     <mo-select-options @optionsTrigger
                        [trigger]="triggerElementRef()!"
                        [(selectedId)]="selectedId"
+                       [(selectedValue)]="selectedValue"
                        [(show)]="showOptions"
                        [options]="options()"
                        [positioning]="positioning()"
