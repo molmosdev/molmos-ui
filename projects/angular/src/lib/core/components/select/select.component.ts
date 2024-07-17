@@ -45,7 +45,7 @@ export class Select {
   showOptions: WritableSignal<boolean> = signal<boolean>(false);
   isFocused: WritableSignal<boolean> = signal(false);
   options: Signal<readonly SelectOption[]> = contentChildren(SelectOption);
-  onChangeOption: OutputEmitterRef<string> = output<string>();
+  onChangeOption: OutputEmitterRef<void> = output<void>();
   optionsUsingKeyboard: boolean = false;
   selectedValue: string | null = null;
 
@@ -62,7 +62,7 @@ export class Select {
   setSelectedValue(): void {
     if (typeof this.selectedId() !== 'undefined') {
       this.selectedValue = this.options().find(option => option.id() === this.selectedId())?.value()!;
-      this.onChangeOption.emit(this.selectedId()!);
+      this.onChangeOption.emit();
     }
   }
 
