@@ -46,6 +46,7 @@ export class Select {
   showOptions: WritableSignal<boolean> = signal<boolean>(false);
   isFocused: WritableSignal<boolean> = signal(false);
   options: Signal<readonly SelectOption[]> = contentChildren(SelectOption);
+  firstLoad: WritableSignal<boolean> = signal(true);
   onChangeOption: OutputEmitterRef<void> = output<void>();
   optionsUsingKeyboard: boolean = false;
 
@@ -53,6 +54,8 @@ export class Select {
     effect(() => {
       this.setSelectedValue();
       this.handleKeyboardUsageState();
+    }, {
+      allowSignalWrites: true
     });
   }
 
@@ -62,6 +65,14 @@ export class Select {
   setSelectedValue(): void {
     if (typeof this.selectedId() !== 'undefined') {
       this.onChangeOption.emit();
+      if (this.firstLoad()) {
+        this.options().forEach(option => {
+          if (option.id() === this.selectedId()) {
+            this.selectedValue.set(option.value());
+          }
+        });
+        this.firstLoad.set(false);
+      }
     }
   }
 
