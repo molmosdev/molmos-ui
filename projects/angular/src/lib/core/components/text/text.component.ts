@@ -1,4 +1,4 @@
-import { Component, effect, input, InputSignal, model, ModelSignal } from '@angular/core';
+import { Component, effect, input, InputSignal, model, ModelSignal, output, OutputEmitterRef } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NgClass } from '@angular/common';
 
@@ -15,6 +15,7 @@ import { NgClass } from '@angular/common';
 export class Text {
   value: ModelSignal<string | null> = model<string | null>(null);
   label: InputSignal<string | undefined> = input<string | undefined>(undefined);
+  onChange: OutputEmitterRef<string | null> = output<string | null>()
   inputValue: string = '';
 
   constructor() {
@@ -39,5 +40,6 @@ export class Text {
    */
   updateValue(newValue: string): void {
     this.value.set(newValue === '' ? null : newValue);
+    this.onChange.emit(this.value());
   }
 }

@@ -1,4 +1,4 @@
-import { Component, input, InputSignal, model, ModelSignal } from '@angular/core';
+import { Component, input, InputSignal, model, ModelSignal, output, OutputEmitterRef } from '@angular/core';
 import { NgClass } from '@angular/common';
 
 @Component({
@@ -13,11 +13,13 @@ import { NgClass } from '@angular/common';
 export class Switch {
   value: ModelSignal<boolean> = model(false);
   label: InputSignal<string> = input<string>('');
+  onChange: OutputEmitterRef<boolean> = output<boolean>()
 
   /**
    * Toggle the switch value
    */
   toggleSwitch(): void {
     this.value.set(!this.value());
+    this.onChange.emit(this.value());
   }
 }

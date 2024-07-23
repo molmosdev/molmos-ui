@@ -1,4 +1,4 @@
-import { Component, effect, input, InputSignal, model, ModelSignal } from '@angular/core';
+import { Component, effect, input, InputSignal, model, ModelSignal, output, OutputEmitterRef } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgClass } from '@angular/common';
 
@@ -16,11 +16,13 @@ import { NgClass } from '@angular/common';
 export class Number {
   value: ModelSignal<number | null> = model<number | null>(null);
   label: InputSignal<string | undefined> = input<string | undefined>(undefined);
+  onChange: OutputEmitterRef<number | null> = output<number | null>()
   inputValue: number | null = null;
 
   constructor() {
     effect(() => {
       this.inputValue = this.value();
+      this.onChange.emit(this.inputValue);
     });
   }
 

@@ -9,7 +9,9 @@
       {{ label() }}
     </div>
   }
-  {{ selectedValue() }}
+  @if (selectedId() && selectedValue()) {
+    {{ selectedValue() }}
+  }
   <div class="arrows">
     @if (showOptions()) {
       <ng-content select="[mo-arrow-up]"/>
