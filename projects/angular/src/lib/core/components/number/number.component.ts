@@ -1,6 +1,7 @@
 import { Component, effect, input, InputSignal, model, ModelSignal, output, OutputEmitterRef } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgClass } from '@angular/common';
+import { incorrectBackgroundTrigger } from '../../../shared/animations/animations';
 
 @Component({
   selector: 'mo-number',
@@ -11,11 +12,15 @@ import { NgClass } from '@angular/common';
     NgClass
   ],
   templateUrl: './number.component.html',
-  styleUrl: './number.component.scss'
+  styleUrl: './number.component.scss',
+  animations: [
+    incorrectBackgroundTrigger
+  ]
 })
 export class Number {
   value: ModelSignal<number | null> = model<number | null>(null);
   label: InputSignal<string | undefined> = input<string | undefined>(undefined);
+  incorrect: InputSignal<boolean> = input<boolean>(false);
   onChange: OutputEmitterRef<number | null> = output<number | null>()
   inputValue: number | null = null;
 
@@ -24,15 +29,6 @@ export class Number {
       this.inputValue = this.value();
       this.onChange.emit(this.inputValue);
     });
-  }
-
-  /**
-   * Get the input trigger state
-   *
-   * @returns {string} - The input trigger state
-   */
-  get inputTriggerState(): string {
-    return this.label() ? this.value() ? 'hasValue' : 'null' : 'withoutLabel';
   }
 
   /**

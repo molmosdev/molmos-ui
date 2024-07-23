@@ -2,4 +2,7 @@
 <section #optionsContainer (click)="show.set(false)" [@fadeInOutVerticalTrigger]="positioningParams"
          [ngStyle]="{'max-height': height() + 'px'}">
   <ng-content/>
+  @if (noOptions()) {
+    <div class="no-options">{{ noOptionsText() }}</div>
+  }
 </section>

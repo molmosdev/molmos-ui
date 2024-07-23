@@ -1,4 +1,4 @@
-import { animate, style, transition, trigger } from '@angular/animations';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 export const fadeInOutAnimation = trigger('fadeInOutAnimation', [
   transition(':enter', [
@@ -28,4 +28,20 @@ export const fadeInOutVerticalTrigger = trigger('fadeInOutVerticalTrigger', [
   transition(':leave', [
     animate('0.1s', style({ opacity: 0, transform: '{{ translateFrom }}' })),
   ], { params: { translateFrom: 'translateY(-5px)', translateTo: 'translateY(0)' } })
+])
+
+export const incorrectBackgroundTrigger = trigger('incorrectBackgroundTrigger', [
+  state('true', style({ backgroundColor: '#FDE3E3FF' })),
+  state('false', style({ backgroundColor: 'transparent' })),
+  transition('* <=> *', [
+    animate('0.2s')
+  ]),
+])
+
+export const incorrectBackgroundGradientTrigger = trigger('incorrectBackgroundGradientTrigger', [
+  state('true', style({ background: '#FDE3E3FF' })),
+  state('false', style({ background: 'linear-gradient(90deg, transparent 0%, var(--background) 51%)' })),
+  transition('* <=> *', [
+    animate('0.2s')
+  ]),
 ])

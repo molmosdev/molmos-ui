@@ -1,5 +1,6 @@
 import {
   Component,
+  computed,
   effect,
   ElementRef,
   HostListener,
@@ -46,6 +47,8 @@ export class SelectOptions implements OnDestroy {
   usingKeyboard: ModelSignal<boolean> = model(false);
   firstLoad: WritableSignal<boolean> = signal(true);
   options: InputSignal<readonly SelectOption[]> = input<readonly SelectOption[]>([]);
+  noOptions: Signal<boolean> = computed(() => this.options().length === 0);
+  noOptionsText: InputSignal<string> = input<string>('No options available');
   subscriptions: Subscription = new Subscription();
 
   constructor() {

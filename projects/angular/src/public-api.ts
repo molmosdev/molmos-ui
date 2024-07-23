@@ -62,3 +62,6 @@ export * from './lib/core/components/number/number.component';
 
 /* Switch */
 export * from './lib/core/components/switch/switch.component';
+
+/* Animations */
+export * from './lib/shared/animations/animations';

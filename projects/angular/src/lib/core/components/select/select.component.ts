@@ -22,6 +22,7 @@ import { NgClass } from '@angular/common';
 import {
   SelectOption
 } from '../../../shared/components/select-options/components/select-option/select-option.component';
+import { incorrectBackgroundGradientTrigger, incorrectBackgroundTrigger } from '../../../shared/animations/animations';
 
 @Component({
   selector: 'mo-select',
@@ -34,7 +35,9 @@ import {
   templateUrl: './select.component.html',
   styleUrls: ['./select.component.scss'],
   animations: [
-    optionsTrigger
+    optionsTrigger,
+    incorrectBackgroundTrigger,
+    incorrectBackgroundGradientTrigger
   ]
 })
 export class Select {
@@ -43,6 +46,8 @@ export class Select {
   selectedId: ModelSignal<string | null> = model.required<string | null>();
   selectedValue: ModelSignal<string | null> = model<string | null>(null);
   triggerElementRef: Signal<ElementRef | undefined> = viewChild<ElementRef>('trigger');
+  incorrect: InputSignal<boolean> = input<boolean>(false);
+  noOptionsText: InputSignal<string> = input<string>('No options available');
   showOptions: WritableSignal<boolean> = signal<boolean>(false);
   isFocused: WritableSignal<boolean> = signal(false);
   options: Signal<readonly SelectOption[]> = contentChildren(SelectOption);

@@ -21,6 +21,12 @@
     width: 100%;
     box-sizing: border-box;
 
+    .no-options {
+      padding: 14px;
+      box-sizing: border-box;
+      text-align: center;
+    }
+
     .option {
       padding: 10px 15px;
       min-height: 35.45px;
