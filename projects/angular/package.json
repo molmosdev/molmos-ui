@@ -1,6 +1,6 @@
 {
   "name": "@molmos-ui/angular",
-  "version": "0.0.1-beta.0.4",
+  "version": "0.0.1-beta.0.4.1",
   "peerDependencies": {
     "@angular/common": "^18.0.0",
     "@angular/core": "^18.0.0"
