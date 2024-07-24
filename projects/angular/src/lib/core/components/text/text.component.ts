@@ -21,6 +21,7 @@ export class Text {
   label: InputSignal<string | undefined> = input<string | undefined>(undefined);
   incorrect: InputSignal<boolean> = input<boolean>(false);
   type: InputSignal<string> = input<string>('text');
+  hasValueForced: InputSignal<boolean> = input<boolean>(false);
   onChange: OutputEmitterRef<string | null> = output<string | null>()
   inputValue: string = '';
 

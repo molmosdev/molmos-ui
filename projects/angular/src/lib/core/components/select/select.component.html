@@ -5,7 +5,7 @@
      [ngClass]="{'has-label': label(), 'has-value': selectedId()}"
      class="selected-option" tabindex="0">
   @if (label()) {
-    <div class="label" [ngClass]="{'has-value': selectedId()}" [@incorrectBackgroundTrigger]="incorrect()">
+    <div class="label" [ngClass]="{'has-value': selectedId()}">
       {{ label() }}
     </div>
   }

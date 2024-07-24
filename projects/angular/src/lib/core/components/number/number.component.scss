@@ -1,28 +1,28 @@
 :host {
   position: relative;
   color: var(--primary-foreground);
+  display: flex;
 
   .label {
     position: absolute;
     transform: translateY(-50%);
     left: 10px;
     z-index: 1;
-    background: var(--background);
+    background: transparent;
     pointer-events: none;
+    font-size: 13px;
+    top: 50%;
 
     &.has-value {
       top: 8px;
       font-size: 70%;
-    }
-
-    &:not(.has-value) {
-      top: 50%;
     }
   }
 
   input {
     min-height: 34px;
     width: 100%;
+    padding: 8px 10px;
     box-sizing: border-box;
     border: 1px solid color-mix(in srgb, var(--primary-foreground) 20%, var(--primary));
     border-radius: var(--roundness);
@@ -38,14 +38,6 @@
       &.has-value {
         padding: 13px 10px 3px;
       }
-
-      &:not(.has-value) {
-        padding: 8px 10px;
-      }
-    }
-
-    &:not(.has-label) {
-      padding: 8px 10px;
     }
   }
 
