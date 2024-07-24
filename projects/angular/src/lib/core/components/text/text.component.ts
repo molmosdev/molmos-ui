@@ -20,6 +20,7 @@ export class Text {
   value: ModelSignal<string | null> = model<string | null>(null);
   label: InputSignal<string | undefined> = input<string | undefined>(undefined);
   incorrect: InputSignal<boolean> = input<boolean>(false);
+  type: InputSignal<string> = input<string>('text');
   onChange: OutputEmitterRef<string | null> = output<string | null>()
   inputValue: string = '';
 

@@ -5,4 +5,4 @@
 }
 <input (keyup)="updateValue(inputValue)" [(ngModel)]="inputValue"
        [@incorrectBackgroundTrigger]="incorrect()" [ngClass]="{'has-label': label(), 'has-value': value()}"
-       class="f-400" type="text">
+       [type]="type()" class="f-400">
