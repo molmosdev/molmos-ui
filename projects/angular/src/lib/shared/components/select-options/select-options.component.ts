@@ -49,6 +49,7 @@ export class SelectOptions implements OnDestroy {
   options: InputSignal<readonly SelectOption[]> = input<readonly SelectOption[]>([]);
   noOptions: Signal<boolean> = computed(() => this.options().length === 0);
   noOptionsText: InputSignal<string> = input<string>('No options available');
+  width: InputSignal<number | undefined> = input<number | undefined>(undefined);
   subscriptions: Subscription = new Subscription();
 
   constructor() {
