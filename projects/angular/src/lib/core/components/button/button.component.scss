@@ -29,6 +29,7 @@
 
     &.secondary {
       background-color: var(--secondary);
+      border: 1px solid var(--secondary);
 
       &:hover {
         background-color: color-mix(in srgb, var(--secondary-foreground) 10%, var(--secondary));
@@ -36,6 +37,7 @@
     }
 
     &.ghost {
+      border: 1px solid transparent;
       background-color: transparent;
 
       &:hover {
@@ -44,7 +46,6 @@
     }
 
     &.secondary, &.ghost {
-      border: 0;
       color: var(--secondary-foreground);
     }
 
