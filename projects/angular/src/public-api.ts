@@ -65,3 +65,8 @@ export * from './lib/core/components/switch/switch.component';
 
 /* Animations */
 export * from './lib/shared/animations/animations';
+
+/* Table */
+export * from './lib/core/components/table/table.component';
+export * from './lib/core/components/table/components/row/row.component';
+export * from './lib/core/components/table/components/row/components/row-item/row-item.component';
