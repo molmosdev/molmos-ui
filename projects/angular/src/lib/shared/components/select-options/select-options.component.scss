@@ -19,11 +19,13 @@
     overflow-x: hidden;
     scrollbar-width: thin;
     box-sizing: border-box;
+    width: 100%;
 
     .no-options {
       padding: 14px;
       box-sizing: border-box;
       text-align: center;
+      width: 100%;
     }
 
     .option {
